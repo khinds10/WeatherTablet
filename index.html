@@ -1,0 +1,73 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>The Weather Wheel (HTML5 WebApp for the Dark Sky Weather API)</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="app/css/bootstrap.min.css">
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="app/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="app/css/main.css">
+<script src="app/scripts/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<script src="app/scripts/vendor/angular.min.js"></script>
+<script src="app/scripts/vendor/ui-bootstrap-tpls-0.13.4.min.js"></script>
+<script type="text/javascript" src="app/scripts/vendor/skycons.js"></script>
+<script src="app/scripts/app.js"></script>
+<script src="app/scripts/controllers/index.js"></script>
+</head>
+<body ng-app="MainApp" ng-cloak>
+	<!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+	<div id='main-page-container' ng-controller="homePageController">
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">The Weather Wheel</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse"></div>
+				<!--/.navbar-collapse -->
+			</div>
+		</nav>
+		<div class="container">
+			<!-- Example row of columns -->
+			<div id="page-container" class="row">
+				<div class="col-md-12">
+					<h2>Currently</h2>
+				</div>
+				<div class="col-md-12" ng-show='showNoLocationError'>
+					<div class="alert alert-danger" role="alert">
+					  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					   <span class="sr-only">Error:</span>
+					  	Error: Your location couldn't be determined.
+					</div>
+				</div>
+				<div id="current-conditions" class="row">
+				  <div class="col-md-6">
+					  <canvas id="weatherIcon" width="256" height="256"></canvas>
+					  <h1>{{currentWeather.currently.apparentTemperature  | number:0}}&deg;</h1>
+					  <h3>{{currentWeather.minutely.summary}}</h3>
+				  </div>
+				  <div class="col-md-6"></div>
+				</div>
+			</div>
+			<hr>
+			<footer>
+				<p>&copy; weatherwheel.net {{currentYear}}</p>
+			</footer>
+		</div>
+		<!-- /container -->
+	</div>
+</body>
+</html>
