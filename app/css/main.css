@@ -7,10 +7,36 @@ body {
 	padding-bottom: 20px;
 }
 
-#page-container {
+h1 {
+	font-weight: bolder; 
+}
+
+footer {
+	padding-top: 40px;
+}
+
+#page-container, #loading-container {
 	min-height: 600px;
+	padding-left: 40px;
+}
+
+#loading-container {
+	padding-top: 50px;
 }
 
 #current-conditions {
 	padding:10px;
+}
+
+.forecast-item {
+	padding-top: 50px;
+}
+
+.forecast-item-day {
+	font-style: italic;
+}
+
+#sunset-container {
+	padding-left: 200px;
+	font-style: italic;
 }

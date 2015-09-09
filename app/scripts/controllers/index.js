@@ -17,23 +17,46 @@
  
 var indexController = angular.module("indexController", []);
 
-indexController.controller("homePageController", [ '$scope', '$http', '$interval', function($scope, $http, $interval) {
+indexController.controller("homePageController", [ '$scope', '$http', '$interval', '$location', function($scope, $http, $interval, $location) {
 
 	/** save lat/long position obtained from the browser */
 	$scope.showNoLocationError = false;
 	$scope.getConditionsByLocation = function (position) {
 		if (typeof position.coords.latitude != 'undefined' && typeof position.coords.longitude != 'undefined') {
+			$scope.isWeatherLoading = true;
         	$http({
         	    url : window.apiLocation+'?lat='+position.coords.latitude+'&lon='+position.coords.longitude,
         	    method : "GET",
         	    data : {}
         	}).then(function(response) {
         		$scope.currentWeather = response.data;
+        		$scope.isWeatherLoading = false;
         		console.log($scope.currentWeather);
         		
         		/** set current weather icon */
-        		$scope.setWeatherIcon();	
-        	});	
+        		$scope.setWeatherIcon('currentlyWeatherIcon', $scope.currentWeather.currently.icon);
+        		
+        		/** set the forecast icons */
+        		$scope.setWeatherIcon('forecastWeatherIcon1', $scope.currentWeather.daily.data[0].icon);
+        		$scope.setWeatherIcon('forecastWeatherIcon2', $scope.currentWeather.daily.data[1].icon);
+        		$scope.setWeatherIcon('forecastWeatherIcon3', $scope.currentWeather.daily.data[2].icon);
+        		
+        		/** get the location details of your currently location based on current lat/long */
+            	$http({
+            	    url : window.apiLocationFinderService+'?q='+position.coords.latitude+','+position.coords.longitude+'&format=json',
+            	    method : "GET",
+            	    data : {}
+            	}).then(function(response) {
+            		$scope.currentLocationInfo = response.data;
+            		var locationDetails = $scope.currentLocationInfo[0].display_name.split(',');
+            		$scope.currentLocationDetails.street = locationDetails[0];
+            		$scope.currentLocationDetails.city = locationDetails[1];
+            		$scope.currentLocationDetails.county = locationDetails[2];
+            		$scope.currentLocationDetails.state = locationDetails[3];
+            		$scope.currentLocationDetails.zip = locationDetails[4];
+            		$scope.currentLocationDetails.country = locationDetails[5];
+            	});
+        	});
     	} else {
     		$scope.showNoLocationError = true;
     	}
@@ -49,17 +72,29 @@ indexController.controller("homePageController", [ '$scope', '$http', '$interval
     }
     
 	/** based on current conditions set the "skycon" animated canvas*/
-    $scope.setWeatherIcon = function() {
+    $scope.setWeatherIcon = function(element, icon) {
     	var icons = new Skycons(),
         list  = ["clear-day", "clear-night", "partly-cloudy-day","partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind","fog"],i;
-      	for(i = list.length; i--; ) icons.set('weatherIcon', $scope.currentWeather.currently.icon);
+      	for(i = list.length; i--; ) icons.set(element, icon);
       	icons.play();
     };
     
     /** load page resources */
 	$scope.currentWeather = {};
+	$scope.currentLocationInfo = {};
+	$scope.currentLocationDetails = {};
+	$scope.isWeatherLoading = true;
     $scope.currentYear = new Date().getFullYear();
     $scope.getWeatherConditions();
+    
+    /** turn on and off display mode based on URL */
+    $scope.displayMode = false;
+    var documentURL = window.location.href;
+    $scope.displayModePattern = /displaymode=true$/;
+    var isDisplayMode = documentURL.match($scope.displayModePattern)
+    if (isDisplayMode) {
+    	$scope.displayMode = true;
+    }
     
     /** get the current weather conditions each 10 minutes */    
     $interval( function(){ $scope.getWeatherConditions(); }, 600000);
