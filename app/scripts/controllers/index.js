@@ -14,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
 var indexController = angular.module("indexController", []);
 
 indexController.controller("homePageController", [ '$scope', '$http', '$interval', '$location', function($scope, $http, $interval, $location) {
@@ -41,21 +40,21 @@ indexController.controller("homePageController", [ '$scope', '$http', '$interval
         		$scope.setWeatherIcon('forecastWeatherIcon2', $scope.currentWeather.daily.data[1].icon);
         		$scope.setWeatherIcon('forecastWeatherIcon3', $scope.currentWeather.daily.data[2].icon);
         		
-        		/** get the location details of your currently location based on current lat/long */
-            	$http({
-            	    url : window.apiLocationFinderService+'?q='+position.coords.latitude+','+position.coords.longitude+'&format=json',
-            	    method : "GET",
-            	    data : {}
-            	}).then(function(response) {
-            		$scope.currentLocationInfo = response.data;
-            		var locationDetails = $scope.currentLocationInfo[0].display_name.split(',');
-            		$scope.currentLocationDetails.street = locationDetails[0];
-            		$scope.currentLocationDetails.city = locationDetails[1];
-            		$scope.currentLocationDetails.county = locationDetails[2];
-            		$scope.currentLocationDetails.state = locationDetails[3];
-            		$scope.currentLocationDetails.zip = locationDetails[4];
-            		$scope.currentLocationDetails.country = locationDetails[5];
-            	});
+        		/** setup the daily summaries for the next 3 days, with the extreme high/low temp listed */
+        		$scope.currentWeather.dailyAverages = [];
+        		$scope.currentWeather.dailyExtreme = [];
+        		$scope.currentWeather.dailyExtremeType = [];
+        		for (i = 0; i < 4; i++) { 
+        			var dailyAverage = ($scope.currentWeather.daily.data[i].apparentTemperatureMax + $scope.currentWeather.daily.data[i].apparentTemperatureMin) / 2;
+        			$scope.currentWeather.dailyAverages[i] = dailyAverage;
+        			if ($scope.currentWeather.daily.data[i].apparentTemperatureMax >= 60) {
+        				$scope.currentWeather.dailyExtreme[i] = $scope.currentWeather.daily.data[i].apparentTemperatureMax;
+        				$scope.currentWeather.dailyExtremeType[i] = 'high';
+        			} else {
+        				$scope.currentWeather.dailyExtreme[i] = $scope.currentWeather.daily.data[i].apparentTemperatureMin;
+        				$scope.currentWeather.dailyExtremeType[i] = 'low';
+        			}
+				}
         	});
     	} else {
     		$scope.showNoLocationError = true;
@@ -73,7 +72,7 @@ indexController.controller("homePageController", [ '$scope', '$http', '$interval
     
 	/** based on current conditions set the "skycon" animated canvas*/
     $scope.setWeatherIcon = function(element, icon) {
-    	var icons = new Skycons(),
+    	var icons = new Skycons({"color": "white"}),
         list  = ["clear-day", "clear-night", "partly-cloudy-day","partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind","fog"],i;
       	for(i = list.length; i--; ) icons.set(element, icon);
       	icons.play();

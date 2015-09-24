@@ -3,21 +3,44 @@
    ========================================================================== */
    
 body {
-	padding-top: 50px;
-	padding-bottom: 20px;
+	background-color: black;
+	color: white;
 }
 
 h1 {
+	font-weight: bolder;
+	font-size: 150px;
+	margin: 0px;
+}
+
+h2 {
 	font-weight: bolder; 
+	font-size: 100px;
+	margin: 0px;
+}
+
+h3 {
+	font-weight: bolder; 
+	font-size: 50px;
+	margin: 0px;
 }
 
 footer {
-	padding-top: 40px;
+	border-top: 1px solid white;
+	background-color:black;
+	padding:10px;
+	width:100%;
+	position:absolute;
+	bottom:0;
+	left:0;
+}
+
+#navigation-padding-container {
+	padding-top: 55px;
 }
 
 #page-container, #loading-container {
-	min-height: 600px;
-	padding-left: 40px;
+	border: 1px solid #000;
 }
 
 #loading-container {
@@ -39,4 +62,48 @@ footer {
 #sunset-container {
 	padding-left: 200px;
 	font-style: italic;
+}
+   
+#forecast-list strong {
+	font-size: 60px;
+}
+
+#forecast-list {
+	font-size: 40px;
+}
+
+.forecast-item {
+	font-size: 40px;
+	padding-top: 50px;
+}
+
+.forecast-item-day {
+	font-size: 30px;
+	font-style: italic;
+}
+
+.summary {
+	font-size: 20px;
+	display:none;
+}
+
+#sunset-container {
+	display:none;
+	top: -100px;
+	padding: 0px;
+	margin: 0px;
+	font-size: 30px;
+	padding-left: 200px;
+	padding-bottom: 10px;
+	font-style: italic;
+}
+
+.extreme-temp {
+	font-size: 32px;
+}
+
+.extreme-temp-current {
+	font-size: 32px;
+	margin-top:100px;
+	text-align: left;
 }

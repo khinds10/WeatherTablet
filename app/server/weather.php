@@ -18,7 +18,7 @@
 require 'config.php';
 
 /** if we have a valid request with latitude and longitude, then call API */
-if (isset($_GET["lat"]) && $_GET["lon"]) {
+if (isset($_GET["lat"]) && isset($_GET["lon"])) {
 	echo cURL("https://{$DarkSKYURI}/forecast/{$APIKEY}/{$_GET["lat"]},{$_GET["lon"]}");
 }
 

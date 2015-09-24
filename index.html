@@ -28,72 +28,73 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 	<div id='main-page-container' ng-controller="homePageController">
-		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-show="!displayMode">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="/">The Weather Wheel</a>
-				</div>
-				<div id="navbar" class="navbar-collapse collapse"></div>
-				<!--/.navbar-collapse -->
-			</div>
-		</nav>
+	  	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-show="!displayMode">
+	      <div class="navbar-header">
+	        <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+	          <span class="sr-only">Toggle navigation</span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	        </button>
+	        <a class="navbar-brand" href="/">The Weather Wheel</a>
+	      </div>
+	      <!-- Collect the nav links, forms, and other content for toggling -->
+	      <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'" ng-click="navCollapsed=true">
+	        <ul class="nav navbar-nav">
+	          <li class="active"><a href="#">Forecast</a></li>
+	          <li><a href="?displaymode=true">Wall Mode</a></li>
+	        </ul>
+	        <ul class="nav navbar-nav navbar-right">
+	          <li><!--a href="#">Link</a--></li>
+	        </ul>
+	      </div><!-- /.navbar-collapse -->
+	    </nav>
 		<div class="container">
-		
+		 	<div id="navigation-padding-container" ng-show="!displayMode"></div>
 			<div id="page-container" class="row" ng-show='!isWeatherLoading'>
-				<div class="col-md-12">
-					<h3>{{currentLocationDetails.city}}, {{currentLocationDetails.state}}</h3>
-				</div>
-				<div class="col-md-12" ng-show='showNoLocationError'>
-					<div class="alert alert-danger" role="alert">
-					  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-					   <span class="sr-only">Error:</span>
-					  	Error: Your location couldn't be determined.
-					</div>
-				</div>
 				<div id="current-conditions" class="row">
 				  <div class="col-md-6">
-					  <canvas id="currentlyWeatherIcon" width="256" height="256"></canvas>
-					  <h1>{{currentWeather.currently.apparentTemperature | number:0}}&deg;</h1>
-					  <h3>{{currentWeather.minutely.summary}}</h3>
-					  <h4 id="sunset-container">Sunset: {{currentWeather.daily.data[0].sunsetTime * 1000 | date:'h:mm a'}}</h4>
+					  <canvas id="currentlyWeatherIcon" width="300" height="300"></canvas>
+					  <div class="col-md-7">
+					   	<h1>{{currentWeather.currently.apparentTemperature | number:0}}&deg;</h1>
+					  	<h4 id="sunset-container">Dark @ {{currentWeather.daily.data[0].sunsetTime * 1000 | date:'h:mm a'}}</h4>
+					  </div>
+					  <div class="col-md-5 extreme-temp-current">
+					  	({{currentWeather.dailyExtremeType[3]}}: {{currentWeather.dailyExtreme[3] | number:0}}&deg;)
+					  </div>					  
+					  <h3 style="white-space: nowrap; width: 200%; overflow: hidden;">{{currentWeather.minutely.summary}}</h3>
 				  </div>
-				  <div class="col-md-6"> </div>
-				</div>
-				<br/><br/>
-				<div id="forecast-container" class="row">
-					<div class="col-md-3 forecast-item">
-						<div class="forecast-item-day">{{currentWeather.daily.data[1].time * 1000 | date:'EEE'}}</div>
-						<canvas id="forecastWeatherIcon1" width="64" height="64"></canvas>
-						<strong>{{currentWeather.daily.data[1].apparentTemperatureMax | number:0}}</strong>&deg; / <strong>{{currentWeather.daily.data[1].apparentTemperatureMin | number:0}}</strong>&deg;
-						<br/>{{currentWeather.daily.data[1].summary}}
-					</div>
-					<div class="col-md-3 forecast-item">
-						<div class="forecast-item-day">{{currentWeather.daily.data[2].time * 1000 | date:'EEE'}}</div>
-						<canvas id="forecastWeatherIcon2" width="64" height="64"></canvas>
-						<strong>{{currentWeather.daily.data[2].apparentTemperatureMax | number:0}}</strong>&deg; / <strong>{{currentWeather.daily.data[2].apparentTemperatureMin | number:0}}</strong>&deg;
-						<br/>{{currentWeather.daily.data[2].summary}}
-					</div>
-					<div class="col-md-3 forecast-item">
-						<div class="forecast-item-day">{{currentWeather.daily.data[3].time * 1000 | date:'EEE'}}</div>
-						<canvas id="forecastWeatherIcon3" width="64" height="64"></canvas>
-						<strong>{{currentWeather.daily.data[3].apparentTemperatureMax | number:0}}</strong>&deg; / <strong>{{currentWeather.daily.data[3].apparentTemperatureMin | number:0}}</strong>&deg;
-						<br/>{{currentWeather.daily.data[3].summary}}
-					</div>
+				  <div id="forecast-list" class="col-md-6"> 
+				  		<div style="padding:10px;"><div>
+						<div class="forecast-item-day">{{currentWeather.daily.data[1].time * 1000 | date:'EEEE'}}</div>
+						<canvas id="forecastWeatherIcon1" width="100" height="100"></canvas>
+						<strong>~{{currentWeather.dailyAverages[1] | number:0}}</strong>&deg;
+						<span class="extreme-temp">({{currentWeather.dailyExtremeType[1]}}: {{currentWeather.dailyExtreme[1] | number:0}}&deg;)</span>
+						<br/><div class='summary'>{{currentWeather.daily.data[1].summary}}</div>
+					
+						<div class="forecast-item-day">{{currentWeather.daily.data[2].time * 1000 | date:'EEEE'}}</div>
+						<canvas id="forecastWeatherIcon2" width="100" height="100"></canvas>
+						<strong>~{{currentWeather.dailyAverages[2] | number:0}}</strong>&deg;
+						<span class="extreme-temp">({{currentWeather.dailyExtremeType[2]}}: {{currentWeather.dailyExtreme[2] | number:0}}&deg;)</span>
+						<br/><div class='summary'>{{currentWeather.daily.data[2].summary}}</div>
+						
+						<div class="forecast-item-day">{{currentWeather.daily.data[3].time * 1000 | date:'EEEE'}}</div>
+						<canvas id="forecastWeatherIcon3" width="100" height="100"></canvas>
+						<strong>~{{currentWeather.dailyAverages[3] | number:0}}</strong>&deg; 
+						<span class="extreme-temp">({{currentWeather.dailyExtremeType[3]}}: {{currentWeather.dailyExtreme[3] | number:0}}&deg;)</span> 
+						<br/><div class='summary'>{{currentWeather.daily.data[3].summary}}</div>
+						
+				  </div>
 				</div>
 			</div>
-			
 			<div>
 				<div id="loading-container" class="row" ng-show='isWeatherLoading'>
 				<div class="col-md-12">
 					<h1>Loading...</h1>
 				</div>
 			</div>
-			
+			<div id="navigation-padding-container" ng-show="!displayMode"></div>
 			<footer ng-show="!displayMode">
-				<hr>
 				<p>&copy; weatherwheel.net {{currentYear}}</p>
 			</footer>
 		</div>
