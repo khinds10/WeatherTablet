@@ -44,10 +44,15 @@ indexController.controller("homePageController", [ '$scope', '$http', '$interval
         		$scope.currentWeather.dailyAverages = [];
         		$scope.currentWeather.dailyExtreme = [];
         		$scope.currentWeather.dailyExtremeType = [];
+        		
+        	    var today = new Date();
+        	    var hourOfDay = today.getHours();
         		for (i = 0; i < 4; i++) { 
         			var dailyAverage = ($scope.currentWeather.daily.data[i].apparentTemperatureMax + $scope.currentWeather.daily.data[i].apparentTemperatureMin) / 2;
         			$scope.currentWeather.dailyAverages[i] = dailyAverage;
-        			if ($scope.currentWeather.daily.data[i].apparentTemperatureMax >= 60) {
+        			
+        			/** if it's daytime before 4pm then we'll show the highs, else it's nightime and we'll show the lows */
+        			if (hourOfDay < 16){
         				$scope.currentWeather.dailyExtreme[i] = $scope.currentWeather.daily.data[i].apparentTemperatureMax;
         				$scope.currentWeather.dailyExtremeType[i] = 'high';
         			} else {

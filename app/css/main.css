@@ -88,13 +88,10 @@ footer {
 }
 
 #sunset-container {
-	display:none;
-	top: -100px;
 	padding: 0px;
 	margin: 0px;
 	font-size: 30px;
-	padding-left: 200px;
-	padding-bottom: 10px;
+	padding-left: 280px;
 	font-style: italic;
 }
 

@@ -54,13 +54,13 @@
 			<div id="page-container" class="row" ng-show='!isWeatherLoading'>
 				<div id="current-conditions" class="row">
 				  <div class="col-md-6">
-					  <canvas id="currentlyWeatherIcon" width="300" height="300"></canvas>
+					  <h4 id="sunset-container">Dark @ {{currentWeather.daily.data[0].sunsetTime * 1000 | date:'h:mm a'}}</h4>
+					  <canvas id="currentlyWeatherIcon" width="268" height="268"></canvas>
 					  <div class="col-md-7">
 					   	<h1>{{currentWeather.currently.apparentTemperature | number:0}}&deg;</h1>
-					  	<h4 id="sunset-container">Dark @ {{currentWeather.daily.data[0].sunsetTime * 1000 | date:'h:mm a'}}</h4>
 					  </div>
 					  <div class="col-md-5 extreme-temp-current">
-					  	({{currentWeather.dailyExtremeType[3]}}: {{currentWeather.dailyExtreme[3] | number:0}}&deg;)
+					  	({{currentWeather.dailyExtremeType[0]}}: {{currentWeather.dailyExtreme[0] | number:0}}&deg;)
 					  </div>					  
 					  <h3 style="white-space: nowrap; width: 200%; overflow: hidden;">{{currentWeather.minutely.summary}}</h3>
 				  </div>
