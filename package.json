@@ -1,7 +1,7 @@
 {
-  "name": "WeatherWheel",
+  "name": "WeatherTablet",
   "version": "1.1.0",
-  "description": "HTML5 Web Application using Dark Sky API",
+  "description": "Wall Based Tablet for Current Weather",
   "main": "index.js",
   "dependencies": {
     "angular": "~1.4.8",

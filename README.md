@@ -1,7 +1,5 @@
-# webapp
-The Weather Wheel::The best UI for the Dark Sky Forecast API
-
-Web Application using Dark Sky API
+# Weather Tablet
+Wall Based Tablet for Current Weather
 
 To install dependancies and build:
 

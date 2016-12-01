@@ -1,7 +1,7 @@
 <?php
 /**
  * PHP cURL call to return JSON response to Javascript
- * @copyright Kevin Hinds @ WeatherWheel.net
+ * @copyright Kevin Hinds @ KevinHinds.com
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,7 @@
  * limitations under the License.
  */
 require 'config.php';
-
-// if we have a valid request with latitude and longitude, then call API
-if (isset($_GET["lat"]) && isset($_GET["lon"])) {
-	echo cURL("https://{$DarkSKYURI}/forecast/{$APIKEY}/{$_GET["lat"]},{$_GET["lon"]}");
-}
+echo cURL("https://{$DarkSKYURI}/forecast/{$APIKEY}/{$latitude},{$longitude}");
 
 /**
  * get the response from the API to send to the JS 
