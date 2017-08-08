@@ -1,4 +1,6 @@
-body { background-color: black; color: white; }
+html { width: 1280px; height: 800px; max-width: 1280px; max-height: 800px; }
+
+body { background-color: black; color: white; width: 1280px; height: 800px; max-width: 1280px; max-height: 800px; }
 
 footer { border-top: 1px solid white; background-color: black; padding: 10px; width: 100%; position: absolute; bottom: 0; left: 0; }
 
@@ -26,16 +28,34 @@ footer { border-top: 1px solid white; background-color: black; padding: 10px; wi
 
 .extreme-temp { font-size: 32px; }
 
-.extreme-temp-current { font-size: 32px; margin-top: 100px; text-align: left; }
+.extreme-temp-current { font-size: 36px; margin-top: 130px; text-align: left; }
+
+#hourly-summary-container { position: absolute; bottom: 10px; right: 0px; width: 100%; }
+
+#hourly-precipitation { position: absolute; bottom: 80px; }
+
+.hourly-time-container { margin: 0; padding: 0; min-width: 100px; }
 
 #navigation-padding-container { padding-top: 55px; }
 
 #page-container, #loading-container { border: 1px solid #000; }
 
-h1 { font-weight: bolder; font-size: 150px; margin: 0px; }
+#main-page-container { border: solid 1px white; width: 1280px; height: 800px; max-width: 1280px; max-height: 800px; }
+
+h1 { font-weight: bolder; font-size: 200px; margin: 0px; }
 
 h2 { font-weight: bolder; font-size: 100px; margin: 0px; }
 
 h3 { font-weight: bolder; font-size: 50px; margin: 0px; }
+
+.minute-summary { white-space: nowrap; width: 150%; overflow: hidden; padding-top: 10px; }
+
+.daily-summary { font-size: 20px; padding-left: 200px; padding-bottom: 15px; overflow: hidden; height: 25px; }
+
+.hourly-summary { font-size: 45px; float: right; margin-right: 60px; }
+
+.medium-text { font-size: 28px; }
+
+.hourly-time { padding: 10px; font-weight: bold; color: black; }
 
 /*# sourceMappingURL=main.css.map */

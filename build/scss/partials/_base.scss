@@ -1,6 +1,17 @@
+html {
+	width: 1280px; 
+	height:800px;
+    max-width: 1280px; 
+	max-height:800px;
+}
+
 body {
 	background-color: black;
 	color: white;
+	width: 1280px; 
+	height:800px;
+    max-width: 1280px; 
+	max-height:800px;
 }
 
 footer {
@@ -70,7 +81,25 @@ footer {
 }
 
 .extreme-temp-current {
-	font-size: 32px;
-	margin-top:100px;
-	text-align: left;
+    font-size: 36px;
+    margin-top: 130px;
+    text-align: left;
+}
+
+#hourly-summary-container {
+    position: absolute; 
+    bottom: 10px; 
+    right: 0px; 
+    width: 100%;
+}
+
+#hourly-precipitation {
+    position: absolute; 
+    bottom: 80px;
+}
+
+.hourly-time-container {
+    margin:0; 
+    padding: 0; 
+    min-width: 100px;
 }

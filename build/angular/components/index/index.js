@@ -26,10 +26,41 @@ indexController.controller("homePageController", [ '$scope', '$http', '$interval
     	    method : "GET",
     	    data : {}
     	}).then(function(response) {
+    	
     		$scope.currentWeather = response.data;
     		$scope.isWeatherLoading = false;
     		console.log($scope.currentWeather);
     		
+    		// get the parsed weather for hour by hour summary
+    		$scope.hourlyWeather = $scope.currentWeather.hourly.data.splice(0,12);
+    		$scope.hourlyWeatherParsed = [];
+    		$scope.colorValues = ['#4A80C7', '#80A4D5', '#B5BECA', '#D5DAE2', '#EDEEF0'];
+    		angular.forEach($scope.hourlyWeather, function(value, key) {
+              
+              $scope.hourlyWeatherParsed[key] = value;
+              
+              // clear
+              $scope.hourlyWeatherParsed[key].color = '#EDEEF0';
+              
+              // rain
+              if (value.icon == 'rain' || value.icon == 'sleet' || value.icon == 'snow') {
+                $scope.hourlyWeatherParsed[key].color = '#4A80C7';
+                if (value.summary.indexOf('Light') !== -1) {
+                    $scope.hourlyWeatherParsed[key].color = '#80A4D5';
+                }
+              }
+              
+              // cloudy
+              if (value.icon == 'cloudy' || value.icon == 'fog' || value.icon == 'wind') {
+                $scope.hourlyWeatherParsed[key].color = '#B5BECA';
+              }  
+              
+              // partly cloudy
+              if (value.icon == 'partly-cloudy-day' || value.icon == 'partly-cloudy-night') {
+                $scope.hourlyWeatherParsed[key].color = '#D5DAE2';
+              }
+            });
+
     		// set current weather icon
     		$scope.setWeatherIcon('currentlyWeatherIcon', $scope.currentWeather.currently.icon);
     		
@@ -52,10 +83,10 @@ indexController.controller("homePageController", [ '$scope', '$http', '$interval
     			// if it's daytime after 4pm till 6am we'll show the lows, else it's daytime and we'll show the highs
     			if (hourOfDay > 16 || hourOfDay < 6) {
     				$scope.currentWeather.dailyExtreme[i] = $scope.currentWeather.daily.data[i].apparentTemperatureMin;
-    				$scope.currentWeather.dailyExtremeType[i] = 'low';
+    				$scope.currentWeather.dailyExtremeType[i] = 'LOW';
     			} else {
     				$scope.currentWeather.dailyExtreme[i] = $scope.currentWeather.daily.data[i].apparentTemperatureMax;
-    				$scope.currentWeather.dailyExtremeType[i] = 'high';
+    				$scope.currentWeather.dailyExtremeType[i] = 'HIGH';
     			}
 			}
     	});

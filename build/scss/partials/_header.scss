@@ -5,3 +5,11 @@
 #page-container, #loading-container {
 	border: 1px solid #000;
 }
+
+#main-page-container {
+    border: solid 1px white; 
+    width: 1280px; 
+    height:800px;
+    max-width: 1280px; 
+    max-height:800px;
+}
