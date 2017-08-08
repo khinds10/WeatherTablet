@@ -31,10 +31,14 @@ h3 {
     height: 25px;
 }
 
-.hourly-summary {
-    font-size: 45px; 
+#hourly-summary {
+    font-size: 35px;
+    font-style: italic; 
     float: right; 
     margin-right: 60px;
+    width: 90%; 
+    overflow: hidden; 
+    height: 45px;
 }
 
 .medium-text {
