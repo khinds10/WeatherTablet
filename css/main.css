@@ -36,6 +36,22 @@ footer { background-color: black; padding: 10px; width: 100%; position: absolute
 
 .hourly-time-container { margin: 0; padding: 0; min-width: 100px; }
 
+#time { position: absolute; font-size: 225px; padding-left: 10px; padding-top: 10px; text-align: center; width: 65%; }
+
+#dateBox { position: absolute; top: 10px; right: 10px; width: 325px; height: 290px; background-color: rgba(255, 255, 255, 0.7); }
+
+#dayOfWeek { position: absolute; text-align: center; width: 100%; font-size: 125px; color: black; }
+
+#dayNumber { color: black; text-align: center; font-size: 150px; width: 100%; top: 120px; position: absolute; }
+
+#date { padding-left: 20px; font-size: 75px; }
+
+#seconds { font-size: 50px; }
+
+#conditions { position: absolute; right: 5px; bottom: 5px; font-size: 175px; color: #D1B3A1; }
+
+#humidity { color: #a1c2d1; }
+
 #navigation-padding-container { padding-top: 55px; }
 
 #page-container, #loading-container { border: 1px solid #000; }
@@ -47,6 +63,8 @@ h1 { font-weight: bolder; font-size: 200px; margin: 0px; }
 h2 { font-weight: bolder; font-size: 100px; margin: 0px; }
 
 h3 { font-weight: bolder; font-size: 50px; margin: 0px; }
+
+h1.indoor, h2.indoor, h3.indoor { padding: 0; margin: 0; display: inline; }
 
 .minute-summary { white-space: nowrap; width: 150%; overflow: hidden; padding-top: 10px; }
 

@@ -16,6 +16,12 @@ h3 {
 	margin: 0px;
 }
 
+h1.indoor, h2.indoor, h3.indoor {
+    padding:0;
+    margin:0;
+    display:inline;
+}
+
 .minute-summary {
     white-space: nowrap; 
     width: 150%; 

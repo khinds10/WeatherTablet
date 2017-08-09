@@ -102,3 +102,59 @@ footer {
     padding: 0; 
     min-width: 100px;
 }
+
+#time {
+    position: absolute;
+    font-size: 225px;
+    padding-left: 10px;
+    padding-top: 10px;
+    text-align:center;
+    width: 65%;
+}
+
+#dateBox {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 325px;
+    height: 290px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+#dayOfWeek {
+    position: absolute;
+    text-align:center;
+    width: 100%;
+    font-size: 125px;
+    color: black;
+}
+
+#dayNumber {
+    color: black;
+    text-align:center;
+    font-size: 150px;
+    width: 100%;
+    top: 120px;
+    position: absolute;
+}
+
+#date {
+    padding-left: 20px;
+    font-size: 75px;
+}
+
+#seconds {
+    font-size: 50px;
+}
+
+#conditions {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    font-size: 175px;
+    color: #D1B3A1;
+}
+
+#humidity {
+    color: #a1c2d1;
+}
