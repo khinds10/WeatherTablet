@@ -38,7 +38,7 @@ footer { background-color: black; padding: 10px; width: 100%; position: absolute
 
 #time { position: absolute; font-size: 225px; padding-left: 10px; padding-top: 10px; text-align: center; width: 65%; }
 
-#dateBox { position: absolute; top: 10px; right: 10px; width: 325px; height: 290px; background-color: rgba(255, 255, 255, 0.7); }
+#dateBox { position: absolute; top: 20px; right: 10px; width: 325px; height: 290px; background-color: rgba(255, 255, 255, 0.7); }
 
 #dayOfWeek { position: absolute; text-align: center; width: 100%; font-size: 125px; color: black; }
 
