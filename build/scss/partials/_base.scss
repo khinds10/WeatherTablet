@@ -45,15 +45,16 @@ footer {
 }
    
 #forecast-list strong {
-	font-size: 40px;
+	font-size: 60px;
 }
 
 #forecast-list {
-	font-size: 40px;
+    white-space:nowrap;
+	font-size: 60px;
 }
 
 .forecast-item {
-	font-size: 40px;
+	font-size: 60px;
 	padding-top: 50px;
 }
 
@@ -92,13 +93,13 @@ footer {
     width: 90%;
     overflow: hidden;
     height: 45px;
-    bottom: 25px;
+    bottom: -10px;
     position: absolute;
 }
 
 #hourly-precipitation {
     position: absolute; 
-    bottom: 45px;
+    bottom: 10px;
 }
 
 .hourly-time-container {
@@ -106,7 +107,7 @@ footer {
     padding: 0; 
     min-width: 65px;
     white-space: nowrap;
-    top: -30px;
+    top: -24px;
 }
 
 #time {
