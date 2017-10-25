@@ -1,12 +1,10 @@
-html { width: 1280px; height: 800px; max-width: 1280px; max-height: 800px; }
+html { width: 900px; height: 600px; max-width: 900px; max-height: 600px; overflow: hidden; }
 
-body { background-color: black; color: white; width: 1280px; height: 800px; max-width: 1280px; max-height: 800px; }
+body { background-color: black; color: white; width: 900px; height: 600px; max-width: 900px; max-height: 600px; }
 
 footer { background-color: black; padding: 10px; width: 100%; position: absolute; bottom: 0; left: 0; }
 
 #loading-container { padding-top: 50px; }
-
-#current-conditions { padding: 10px; }
 
 .forecast-item { padding-top: 50px; }
 
@@ -14,7 +12,7 @@ footer { background-color: black; padding: 10px; width: 100%; position: absolute
 
 #sunset-container { padding-left: 200px; font-style: italic; }
 
-#forecast-list strong { font-size: 75px; }
+#forecast-list strong { font-size: 40px; }
 
 #forecast-list { font-size: 40px; }
 
@@ -24,31 +22,31 @@ footer { background-color: black; padding: 10px; width: 100%; position: absolute
 
 .summary { font-size: 20px; display: none; }
 
-#sunset-container { padding: 0px; margin: 0px; font-size: 30px; padding-left: 220px; font-style: italic; }
+#sunset-container { padding-top: 10px; font-size: 18px; padding-left: 220px; font-style: italic; }
 
 .extreme-temp { font-size: 32px; }
 
-.extreme-temp-current { font-size: 36px; margin-top: 130px; text-align: left; }
+.extreme-temp-current { margin-top: 75px; font-size: 20px; text-align: left; }
 
-#hourly-summary-container { position: absolute; bottom: 10px; right: 0px; width: 100%; }
+#hourly-summary-container { font-size: 17px; font-style: italic; float: right; margin-right: 60px; width: 90%; overflow: hidden; height: 45px; bottom: 25px; position: absolute; }
 
-#hourly-precipitation { position: absolute; bottom: 80px; }
+#hourly-precipitation { position: absolute; bottom: 45px; }
 
-.hourly-time-container { margin: 0; padding: 0; min-width: 100px; }
+.hourly-time-container { margin: 0; padding: 0; min-width: 65px; white-space: nowrap; top: -30px; }
 
-#time { position: absolute; font-size: 225px; padding-left: 10px; padding-top: 10px; text-align: center; width: 65%; }
+#time { position: absolute; font-size: 125px; padding-left: 10px; padding-top: 10px; text-align: center; width: 65%; }
 
 #dateBox { position: absolute; top: 20px; right: 10px; width: 325px; height: 290px; background-color: rgba(255, 255, 255, 0.7); }
 
-#dayOfWeek { position: absolute; text-align: center; width: 100%; font-size: 125px; color: black; }
+#dayOfWeek { position: absolute; text-align: center; width: 100%; font-size: 75px; color: black; }
 
-#dayNumber { color: black; text-align: center; font-size: 150px; width: 100%; top: 120px; position: absolute; }
+#dayNumber { color: black; text-align: center; font-size: 75px; width: 100%; top: 120px; position: absolute; }
 
-#date { padding-left: 20px; font-size: 75px; }
+#date { padding-left: 20px; font-size: 32px; }
 
-#seconds { font-size: 50px; }
+#seconds { font-size: 25px; }
 
-#conditions { position: absolute; right: 5px; bottom: 5px; font-size: 175px; color: #D1B3A1; }
+#conditions { position: absolute; right: 5px; bottom: 5px; font-size: 80px; color: #D1B3A1; }
 
 #humidity { color: #a1c2d1; }
 
@@ -56,23 +54,23 @@ footer { background-color: black; padding: 10px; width: 100%; position: absolute
 
 #page-container, #loading-container { border: 1px solid #000; }
 
-#main-page-container { width: 1280px; height: 800px; max-width: 1280px; max-height: 800px; }
+#main-page-container { width: 900px; height: 600px; max-width: 900px; max-height: 600px; }
 
-h1 { font-weight: bolder; font-size: 200px; margin: 0px; }
+h1 { font-weight: bolder; font-size: 120px; margin: 0px; }
 
-h2 { font-weight: bolder; font-size: 100px; margin: 0px; }
+h2 { font-weight: bolder; font-size: 50px; margin: 0px; }
 
-h3 { font-weight: bolder; font-size: 50px; margin: 0px; }
+h3 { font-weight: bolder; font-size: 25px; margin: 0px; }
 
 h1.indoor, h2.indoor, h3.indoor { padding: 0; margin: 0; display: inline; }
 
 .minute-summary { white-space: nowrap; width: 150%; overflow: hidden; padding-top: 10px; }
 
-.daily-summary { font-size: 20px; padding-left: 200px; padding-bottom: 15px; overflow: hidden; height: 25px; }
+.daily-summary { font-size: 10px; padding-left: 200px; padding-bottom: 15px; overflow: hidden; height: 25px; white-space: nowrap; }
 
-#hourly-summary { font-size: 35px; font-style: italic; float: right; margin-right: 60px; width: 90%; overflow: hidden; height: 45px; }
+#hourly-summary { font-size: 17px; font-style: italic; float: right; margin-right: 60px; width: 90%; overflow: hidden; height: 45px; }
 
-.medium-text { font-size: 28px; }
+.medium-text { font-size: 14px; }
 
 .hourly-time { padding: 10px; font-weight: bold; color: black; }
 

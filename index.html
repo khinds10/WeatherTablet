@@ -29,22 +29,22 @@
        <div class="container">
        <div id="page-container" class="row" ng-show='!isWeatherLoading'>
        <div id="current-conditions" class="row">
-       <div class="col-md-6">
+       <div class="col-sm-6">
           <h4 id="sunset-container">Dark @ {{currentWeather.daily.data[0].sunsetTime * 1000 | date:'h:mm a'}}</h4>
-          <canvas id="currentlyWeatherIcon" width="320" height="320"></canvas>
-          <div class="col-md-7">
+          <canvas id="currentlyWeatherIcon" width="220" height="220"></canvas>
+          <div class="col-sm-7">
              <h1>{{currentWeather.currently.apparentTemperature | number:0}}&deg;</h1>
           </div>
-          <div class="col-md-5 extreme-temp-current">
+          <div class="col-sm-5 extreme-temp-current">
              [{{currentWeather.dailyExtremeType[0]}}: {{currentWeather.dailyExtreme[0] | number:0}}&deg;]
           </div><br/>
           <h3 class="minute-summary">{{currentWeather.minutely.summary}}</h3>
        </div>
-       <div id="forecast-list" class="col-md-6">
+       <div id="forecast-list" class="col-sm-6">
           <div style="padding:10px;">
              <div>
                 <div class="forecast-item-day">{{currentWeather.daily.data[1].time * 1000 | date:'EEEE'}}</div>
-                <canvas id="forecastWeatherIcon1" width="120" height="120"></canvas>
+                <canvas id="forecastWeatherIcon1" width="60" height="60"></canvas>
                 <strong>~{{currentWeather.dailyAverages[1] | number:0}}</strong>&deg;
                 <span class="medium-text">
                     [{{currentWeather.daily.data[1].apparentTemperatureMin | number:0}} &deg; / {{currentWeather.daily.data[1].apparentTemperatureMax | number:0}} &deg;]
@@ -52,7 +52,7 @@
                 <div class="daily-summary">{{currentWeather.daily.data[1].summary}}</div>
                 <div class='summary'>{{currentWeather.daily.data[1].summary}}</div>
                 <div class="forecast-item-day">{{currentWeather.daily.data[2].time * 1000 | date:'EEEE'}}</div>
-                <canvas id="forecastWeatherIcon2" width="120" height="120"></canvas>
+                <canvas id="forecastWeatherIcon2" width="60" height="60"></canvas>
                 <strong>~{{currentWeather.dailyAverages[2] | number:0}}</strong>&deg;
                 <span class="medium-text">
                     [{{currentWeather.daily.data[2].apparentTemperatureMin | number:0}} &deg; / {{currentWeather.daily.data[2].apparentTemperatureMax | number:0}} &deg;]
@@ -60,7 +60,7 @@
                 <div class="daily-summary">{{currentWeather.daily.data[2].summary}}</div>
                 <div class='summary'>{{currentWeather.daily.data[2].summary}}</div>
                 <div class="forecast-item-day">{{currentWeather.daily.data[3].time * 1000 | date:'EEEE'}}</div>
-                <canvas id="forecastWeatherIcon3" width="120" height="120"></canvas>
+                <canvas id="forecastWeatherIcon3" width="60" height="60"></canvas>
                 <strong>~{{currentWeather.dailyAverages[3] | number:0}}</strong>&deg; 
                 <span class="medium-text">
                     [{{currentWeather.daily.data[3].apparentTemperatureMin | number:0}} &deg; / {{currentWeather.daily.data[3].apparentTemperatureMax | number:0}} &deg;]
@@ -71,7 +71,7 @@
           <br/>
        </div>
        <div id="hourly-precipitation" class="row">
-          <div class="col-md-1 hourly-time-container" ng-repeat="hourly in hourlyWeather">
+          <div class="col-sm-1 hourly-time-container" ng-repeat="hourly in hourlyWeather">
              <div class="hourly-time" style="background-color: {{hourly.color}};">{{hourly.time*1000 | date:'h a'}}</div>
           </div>
         </div>

@@ -1,18 +1,18 @@
 h1 {
 	font-weight: bolder;
-	font-size: 200px;
+	font-size: 120px;
 	margin: 0px;
 }
 
 h2 {
 	font-weight: bolder; 
-	font-size: 100px;
+	font-size: 50px;
 	margin: 0px;
 }
 
 h3 {
 	font-weight: bolder; 
-	font-size: 50px;
+	font-size: 25px;
 	margin: 0px;
 }
 
@@ -30,15 +30,16 @@ h1.indoor, h2.indoor, h3.indoor {
 }
 
 .daily-summary {
-    font-size: 20px; 
+    font-size: 10px; 
     padding-left: 200px; 
     padding-bottom: 15px; 
     overflow: hidden; 
     height: 25px;
+    white-space:nowrap;
 }
 
 #hourly-summary {
-    font-size: 35px;
+    font-size: 17px;
     font-style: italic; 
     float: right; 
     margin-right: 60px;
@@ -48,7 +49,7 @@ h1.indoor, h2.indoor, h3.indoor {
 }
 
 .medium-text {
-    font-size:28px;
+    font-size:14px;
 }
 
 .hourly-time {

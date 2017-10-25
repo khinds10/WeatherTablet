@@ -1,17 +1,18 @@
 html {
-	width: 1280px; 
-	height:800px;
-    max-width: 1280px; 
-	max-height:800px;
+	width: 900px; 
+	height: 600px;
+    max-width: 900px; 
+	max-height: 600px;
+	overflow: hidden;
 }
 
 body {
 	background-color: black;
 	color: white;
-	width: 1280px; 
-	height:800px;
-    max-width: 1280px; 
-	max-height:800px;
+	width: 900px; 
+	height: 600px;
+    max-width: 900px; 
+	max-height: 600px;
 }
 
 footer {
@@ -28,7 +29,6 @@ footer {
 }
 
 #current-conditions {
-	padding:10px;
 }
 
 .forecast-item {
@@ -45,7 +45,7 @@ footer {
 }
    
 #forecast-list strong {
-	font-size: 75px;
+	font-size: 40px;
 }
 
 #forecast-list {
@@ -68,9 +68,8 @@ footer {
 }
 
 #sunset-container {
-	padding: 0px;
-	margin: 0px;
-	font-size: 30px;
+	padding-top: 10px;
+	font-size: 18px;
 	padding-left: 220px;
 	font-style: italic;
 }
@@ -80,32 +79,39 @@ footer {
 }
 
 .extreme-temp-current {
-    font-size: 36px;
-    margin-top: 130px;
+    margin-top: 75px;
+    font-size: 20px;
     text-align: left;
 }
 
 #hourly-summary-container {
-    position: absolute; 
-    bottom: 10px; 
-    right: 0px; 
-    width: 100%;
+    font-size: 17px;
+    font-style: italic;
+    float: right;
+    margin-right: 60px;
+    width: 90%;
+    overflow: hidden;
+    height: 45px;
+    bottom: 25px;
+    position: absolute;
 }
 
 #hourly-precipitation {
     position: absolute; 
-    bottom: 80px;
+    bottom: 45px;
 }
 
 .hourly-time-container {
     margin:0; 
     padding: 0; 
-    min-width: 100px;
+    min-width: 65px;
+    white-space: nowrap;
+    top: -30px;
 }
 
 #time {
     position: absolute;
-    font-size: 225px;
+    font-size: 125px;
     padding-left: 10px;
     padding-top: 10px;
     text-align:center;
@@ -125,14 +131,14 @@ footer {
     position: absolute;
     text-align:center;
     width: 100%;
-    font-size: 125px;
+    font-size: 75px;
     color: black;
 }
 
 #dayNumber {
     color: black;
     text-align:center;
-    font-size: 150px;
+    font-size: 75px;
     width: 100%;
     top: 120px;
     position: absolute;
@@ -140,18 +146,18 @@ footer {
 
 #date {
     padding-left: 20px;
-    font-size: 75px;
+    font-size: 32px;
 }
 
 #seconds {
-    font-size: 50px;
+    font-size: 25px;
 }
 
 #conditions {
     position: absolute;
     right: 5px;
     bottom: 5px;
-    font-size: 175px;
+    font-size: 80px;
     color: #D1B3A1;
 }
 
