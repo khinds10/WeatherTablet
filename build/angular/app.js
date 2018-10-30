@@ -19,6 +19,9 @@ var MainApp = angular.module('MainApp', ['indexController', 'ui.bootstrap']);
 // configure this value to the API you wish to use to retrieve the standard Dark Sky API JSON response
 window.apiLocation = 'server/weather.php';
 
+// configure this value to the API you wish to use to retrieve the standard Dark Sky API JSON response
+window.apiColorLocation = 'server/tempColors.php';
+
 // Intercept POST requests, convert to standard form encoding
 MainApp.config([ '$httpProvider', function($httpProvider) {
     $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";

@@ -18,6 +18,18 @@ var indexController = angular.module("indexController", []);
 
 indexController.controller("homePageController", [ '$scope', '$http', '$interval', '$location', function($scope, $http, $interval, $location) {
 
+    // get the color for the temperature with the colors API
+    $scope.tempColors = [];
+    $scope.getColorForTemp = function(temp, dataElement) {
+    	$http({
+    	    url : window.apiColorLocation + "?temperature=" + temp,
+    	    method : "GET",
+    	    data : {}
+    	}).then(function(response) {
+            $scope.tempColors[dataElement] = response.data;	
+    	}); 
+    }
+
     // get weather to work from the local server calling the DarkSky API
     $scope.getWeatherConditions = function() {
 		$scope.isWeatherLoading = true;
@@ -29,14 +41,13 @@ indexController.controller("homePageController", [ '$scope', '$http', '$interval
     	
     		$scope.currentWeather = response.data;
     		$scope.isWeatherLoading = false;
-    		console.log($scope.currentWeather);
-    		
+    		$scope.getColorForTemp($scope.currentWeather.currently.apparentTemperature, 0);
+
     		// get the parsed weather for hour by hour summary
     		$scope.hourlyWeather = $scope.currentWeather.hourly.data.splice(0,12);
     		$scope.hourlyWeatherParsed = [];
     		$scope.colorValues = ['#4A80C7', '#80A4D5', '#B5BECA', '#D5DAE2', '#EDEEF0'];
     		angular.forEach($scope.hourlyWeather, function(value, key) {
-              
               $scope.hourlyWeatherParsed[key] = value;
               
               // clear
@@ -45,20 +56,14 @@ indexController.controller("homePageController", [ '$scope', '$http', '$interval
               // rain
               if (value.icon == 'rain' || value.icon == 'sleet' || value.icon == 'snow') {
                 $scope.hourlyWeatherParsed[key].color = '#4A80C7';
-                if (value.summary.indexOf('Light') !== -1) {
-                    $scope.hourlyWeatherParsed[key].color = '#80A4D5';
-                }
+                if (value.summary.indexOf('Light') !== -1) $scope.hourlyWeatherParsed[key].color = '#80A4D5';
               }
               
               // cloudy
-              if (value.icon == 'cloudy' || value.icon == 'fog' || value.icon == 'wind') {
-                $scope.hourlyWeatherParsed[key].color = '#B5BECA';
-              }  
+              if (value.icon == 'cloudy' || value.icon == 'fog' || value.icon == 'wind') $scope.hourlyWeatherParsed[key].color = '#B5BECA'; 
               
               // partly cloudy
-              if (value.icon == 'partly-cloudy-day' || value.icon == 'partly-cloudy-night') {
-                $scope.hourlyWeatherParsed[key].color = '#D5DAE2';
-              }
+              if (value.icon == 'partly-cloudy-day' || value.icon == 'partly-cloudy-night') $scope.hourlyWeatherParsed[key].color = '#D5DAE2';
             });
 
     		// set current weather icon
@@ -73,22 +78,31 @@ indexController.controller("homePageController", [ '$scope', '$http', '$interval
     		$scope.currentWeather.dailyAverages = [];
     		$scope.currentWeather.dailyExtreme = [];
     		$scope.currentWeather.dailyExtremeType = [];
-    		
-    	    var today = new Date();
-    	    var hourOfDay = today.getHours();
+			
+			// get the averages for each day
+			count = 0;
     		for (i = 0; i < 4; i++) { 
     			var dailyAverage = ($scope.currentWeather.daily.data[i].apparentTemperatureMax + $scope.currentWeather.daily.data[i].apparentTemperatureMin) / 2;
     			$scope.currentWeather.dailyAverages[i] = dailyAverage;
-    			
-    			// if it's daytime after 4pm till 6am we'll show the lows, else it's daytime and we'll show the highs
-    			if (hourOfDay > 16 || hourOfDay < 6) {
-    				$scope.currentWeather.dailyExtreme[i] = $scope.currentWeather.daily.data[i].apparentTemperatureMin;
-    				$scope.currentWeather.dailyExtremeType[i] = 'LOW';
-    			} else {
-    				$scope.currentWeather.dailyExtreme[i] = $scope.currentWeather.daily.data[i].apparentTemperatureMax;
-    				$scope.currentWeather.dailyExtremeType[i] = 'HIGH';
-    			}
+    			$scope.getColorForTemp(dailyAverage, count+1);
+    			$scope.getColorForTemp($scope.currentWeather.daily.data[i].apparentTemperatureMin, count+2);
+    			$scope.getColorForTemp($scope.currentWeather.daily.data[i].apparentTemperatureMax, count+3);
+    			count = count + 3;
 			}
+			
+			// if it's daytime after 4pm till 6am we'll show the lows, else it's daytime and we'll show the highs
+    	    var today = new Date();
+    	    var hourOfDay = today.getHours();
+			if (hourOfDay > 16 || hourOfDay < 6) {
+				$scope.currentWeather.dailyExtreme[0] = $scope.currentWeather.daily.data[0].apparentTemperatureMin;
+				$scope.currentWeather.dailyExtremeType[0] = 'LOW';
+			} else {
+				$scope.currentWeather.dailyExtreme[0] = $scope.currentWeather.daily.data[0].apparentTemperatureMax;
+				$scope.currentWeather.dailyExtremeType[0] = 'HIGH';
+			}
+			
+			// get daily extreme color
+			$scope.getColorForTemp($scope.currentWeather.dailyExtreme[0], count+1);
     	});
     }
     

@@ -10,3 +10,4 @@ $DarkSKYURI = 'api.forecast.io';
 $API_KEY = 'YOUR API KEY HERE';
 $latitude = 'YOUR HOME LATITUDE';
 $longitude = 'YOUR HOME LONGITUDE';
+$weatherColorsAPI = 'my.temperatures-api.com';

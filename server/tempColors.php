@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 require 'config.php';
-echo cURL("https://{$DarkSKYURI}/forecast/{$APIKEY}/{$latitude},{$longitude}");
+echo cURL("http://{$weatherColorsAPI}/?temperature=".round($_REQUEST['temperature']));
 
 /**
  * get the response from the API to send to the JS 
