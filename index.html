@@ -28,7 +28,7 @@
        <div id='main-page-container' ng-controller="homePageController"> 
        <div class="container">
        <div id="page-container" class="row" ng-show='!isWeatherLoading'>
-       <div id="current-conditions" class="row">
+       <div id="current-conditions">
        <div class="col-sm-6">
           <h4 id="sunset-container">Dark @ {{currentWeather.daily.data[0].sunsetTime * 1000 | date:'h:mm a'}}</h4>
           <canvas id="currentlyWeatherIcon" width="240" height="240"></canvas>

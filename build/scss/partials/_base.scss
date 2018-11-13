@@ -1,18 +1,18 @@
 html {
-	width: 900px; 
-	height: 600px;
-    max-width: 900px; 
-	max-height: 600px;
+	width: 1280px; 
+	height: 800px;
+    max-width: 1280px; 
+	max-height: 800px;
 	overflow: hidden;
 }
 
 body {
 	background-color: black;
 	color: white;
-	width: 900px; 
-	height: 600px;
-    max-width: 900px; 
-	max-height: 600px;
+	width: 1280px; 
+	height: 800px;
+    max-width: 1280px; 
+	max-height: 800px;
 }
 
 footer {
@@ -29,6 +29,7 @@ footer {
 }
 
 #current-conditions {
+
 }
 
 .forecast-item {
@@ -45,7 +46,7 @@ footer {
 }
    
 #forecast-list strong {
-	font-size: 60px;
+	font-size: 80px;
 }
 
 #forecast-list {
@@ -70,7 +71,7 @@ footer {
 
 #sunset-container {
 	padding-top: 10px;
-	font-size: 18px;
+	font-size: 35px;
 	padding-left: 220px;
 	font-style: italic;
 }
@@ -81,31 +82,28 @@ footer {
 
 .extreme-temp-current {
     margin-top: 75px;
-    font-size: 20px;
+    font-size: 35px;
     text-align: left;
 }
 
 #hourly-summary-container {
     font-size: 17px;
-    font-style: italic;
-    float: right;
     margin-right: 60px;
     width: 90%;
-    overflow: hidden;
     height: 45px;
-    bottom: -10px;
+    bottom: 40px;
     position: absolute;
 }
 
 #hourly-precipitation {
     position: absolute; 
-    bottom: 10px;
+    bottom: 90px;
 }
 
 .hourly-time-container {
     margin:0; 
     padding: 0; 
-    min-width: 65px;
+    min-width: 100px;
     white-space: nowrap;
     top: -24px;
 }
