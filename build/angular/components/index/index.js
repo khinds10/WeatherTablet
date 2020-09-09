@@ -111,7 +111,6 @@ indexController.controller("homePageController", [ '$scope', '$http', '$interval
     	var icons = new Skycons({"color": "white"}),
         list  = ["clear-day", "clear-night", "partly-cloudy-day","partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind","fog"],i;
       	for(i = list.length; i--; ) icons.set(element, icon);
-      	icons.play();
     };
     
     // load page resources
