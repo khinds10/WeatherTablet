@@ -45,7 +45,7 @@
              <div>
                 <div class="forecast-item-day">{{currentWeather.daily.data[1].time * 1000 | date:'EEEE'}}</div>
                 <canvas id="forecastWeatherIcon1" width="80" height="80"></canvas>
-                <strong style="color:{{tempColors[1]}};">~{{currentWeather.dailyAverages[1] | number:0}} &deg;</strong>
+                <strong style="color:{{tempColors[3]}};">~{{currentWeather.daily.data[1].apparentTemperatureMax | number:0}} &deg;</strong>
                 <span class="medium-text">
                     [<span style="color:{{tempColors[2]}};">{{currentWeather.daily.data[1].apparentTemperatureMin | number:0}} &deg;</span> / <span style="color:{{tempColors[3]}};">{{currentWeather.daily.data[1].apparentTemperatureMax | number:0}} &deg;</span>]
                 </span>
@@ -53,7 +53,7 @@
                 <div class='summary'>{{currentWeather.daily.data[1].summary}}</div>
                 <div class="forecast-item-day">{{currentWeather.daily.data[2].time * 1000 | date:'EEEE'}}</div>
                 <canvas id="forecastWeatherIcon2" width="80" height="80"></canvas>
-                <strong  style="color:{{tempColors[4]}};">~{{currentWeather.dailyAverages[2] | number:0}} &deg;</strong>
+                <strong  style="color:{{tempColors[6]}};">~{{currentWeather.daily.data[2].apparentTemperatureMax | number:0}} &deg;</strong>
                 <span class="medium-text">
                     [<span style="color:{{tempColors[5]}};">{{currentWeather.daily.data[2].apparentTemperatureMin | number:0}} &deg;</span> / <span style="color:{{tempColors[6]}};">{{currentWeather.daily.data[2].apparentTemperatureMax | number:0}} &deg;</span>]
                 </span>
@@ -61,7 +61,7 @@
                 <div class='summary'>{{currentWeather.daily.data[2].summary}}</div>
                 <div class="forecast-item-day">{{currentWeather.daily.data[3].time * 1000 | date:'EEEE'}}</div>
                 <canvas id="forecastWeatherIcon3" width="80" height="80"></canvas>
-                <strong style="color:{{tempColors[7]}};">~{{currentWeather.dailyAverages[3] | number:0}} &deg;</strong>
+                <strong style="color:{{tempColors[9]}};">~{{currentWeather.daily.data[3].apparentTemperatureMax | number:0}} &deg;</strong>
                 <span class="medium-text">
                     [<span style="color:{{tempColors[8]}};">{{currentWeather.daily.data[3].apparentTemperatureMin | number:0}} &deg;</span> / <span style="color:{{tempColors[9]}};">{{currentWeather.daily.data[3].apparentTemperatureMax | number:0}} &deg;</span>]
                 </span>
