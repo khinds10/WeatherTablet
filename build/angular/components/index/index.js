@@ -41,7 +41,7 @@ indexController.controller("homePageController", [ '$scope', '$http', '$interval
     	
     		$scope.currentWeather = response.data;
     		$scope.isWeatherLoading = false;
-    		$scope.getColorForTemp($scope.currentWeather.currently.apparentTemperature, 0);
+    		$scope.getColorForTemp($scope.currentWeather.currently.apparentTemperature, 'apparentTemperature');
 
     		// get the parsed weather for hour by hour summary
     		$scope.hourlyWeather = $scope.currentWeather.hourly.data.splice(0,12);
@@ -82,11 +82,8 @@ indexController.controller("homePageController", [ '$scope', '$http', '$interval
 			// get the averages for each day
 			count = 0;
     		for (i = 0; i < 4; i++) { 
-    			var dailyAverage = ($scope.currentWeather.daily.data[i].apparentTemperatureMax + $scope.currentWeather.daily.data[i].apparentTemperatureMin) / 2;
-    			$scope.currentWeather.dailyAverages[i] = dailyAverage;
-    			$scope.getColorForTemp(dailyAverage, count+1);
-    			$scope.getColorForTemp($scope.currentWeather.daily.data[i].apparentTemperatureMin, count+2);
-    			$scope.getColorForTemp($scope.currentWeather.daily.data[i].apparentTemperatureMax, count+3);
+    			$scope.getColorForTemp($scope.currentWeather.daily.data[i].apparentTemperatureMin, 'data-'+i+'-min');
+    			$scope.getColorForTemp($scope.currentWeather.daily.data[i].apparentTemperatureMax, 'data-'+i+'-max');
     			count = count + 3;
 			}
 			
@@ -102,7 +99,7 @@ indexController.controller("homePageController", [ '$scope', '$http', '$interval
 			}
 			
 			// get daily extreme color
-			$scope.getColorForTemp($scope.currentWeather.dailyExtreme[0], count+1);
+			$scope.getColorForTemp($scope.currentWeather.dailyExtreme[0], 'dailyExtreme');
     	});
     }
     
